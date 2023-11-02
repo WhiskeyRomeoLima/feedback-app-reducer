@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useReducer } from 'react'
+import feedbackReducer from './reducers/feedbackReducer'
+import Header from './components/Header'
+import FeedbackStats from './components/FeedbackStats'
+import FeedbackList from './components/FeedbackList'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const initialState = {
+  feedback: []
 }
 
-export default App;
+const [state, dispatch] = useReducer(feedbackReducer, initialState)
+
+  useEffect(() => {
+    fetchFeedback()
+  }, [])
+
+  const url = 'http://localhost:5000/feedback?_sort=id&_order=desc'
+  //fetch feedback
+  const fetchFeedback = async () => {
+    const response = await fetch(url)
+    const data = await response.json()
+    dispatch({
+      type: 'GET-FEEDBACK',
+      payload: data
+    })
+    
+  }
+
+   
+  return (
+    <>
+    <Header />
+
+      <div className='container'>
+        <FeedbackStats feedback={state.feedback}  /> 
+        <FeedbackList feedback = {state.feedback} />
+      </div>      
+    </>
+
+  )
+}
+export default App

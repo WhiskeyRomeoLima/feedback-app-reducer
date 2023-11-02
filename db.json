@@ -1,0 +1,29 @@
+{
+  "feedback": [
+    {
+      "id": 1,
+      "rating": 10,
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae."
+    },
+    {
+      "text": "In nulla posuere sollicitudin aliquam ultrices sagittis. Sed ullamcorper morbi tincidunt ornare massa eget. Praesent semper feugiat.",
+      "rating": 9,
+      "id": 2
+    },
+    {
+      "text": "Ornare aenean euismod elementum nisi quis. Etiam erat velit scelerisque in dictum. Purus in massa nec feugiat nisl pretium fusce.",
+      "rating": 7,
+      "id": 3
+    },
+    {
+      "text": "Updated --This is a newer feedback and should be saved to the server",
+      "rating": 6,
+      "id": 4
+    },
+    {
+      "rating": 8,
+      "text": "This was a great post. Thank you.\n",
+      "id": 5
+    }
+  ]
+}
