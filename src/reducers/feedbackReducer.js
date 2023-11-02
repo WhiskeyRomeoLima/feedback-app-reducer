@@ -9,8 +9,9 @@ const feedbackReducer = (state, action) => {
             feedback: action.payload
          }
         case 'DELETE-FEEDBACK':
-            return{
-            ...state.feedback.filter(item => item.id !== action.payload)    
+            return {
+            ...state,
+            feedback: state.feedback.filter(item => item.id !== action.payload)    
             } 
          default:
             throw new Error(`No such type of ${type} in feedbackReducer.`)

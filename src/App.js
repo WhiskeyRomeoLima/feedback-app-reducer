@@ -34,7 +34,7 @@ const [state, dispatch] = useReducer(feedbackReducer, initialState)
 
       <div className='container'>
         <FeedbackStats feedback= {state.feedback}  /> 
-        <FeedbackList feedback = {state.feedback} />
+        <FeedbackList feedback = {state.feedback} dispatch={dispatch} />
       </div>      
     </> 
 

@@ -1,17 +1,16 @@
-import {useReducer} from 'react'
-import feedbackReducer from '../reducers/feedbackReducer'
 import Card from './shared/Card'
 import {FaTimes} from 'react-icons/fa'
-function FeedbackItem({feedback, item}) {
 
-    const [state, dispatch] = useReducer(feedbackReducer, feedback)
+function FeedbackItem({item, dispatch}) {
+console.log(dispatch);
 
     const deleteFeedback = async (id) => {
         if(window.confirm('Are you sure you want to delete?')) {
           await fetch(`/feedback/${id}`, {method: 'DELETE'})
       
           dispatch({
-            type: 'DELETE-FEEDBACK'
+            type: 'DELETE-FEEDBACK',
+            payload: item.id
           })
         }
       }
