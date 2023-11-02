@@ -19,11 +19,6 @@
       "text": "Updated --This is a newer feedback and should be saved to the server",
       "rating": 6,
       "id": 4
-    },
-    {
-      "rating": 8,
-      "text": "This was a great post. Thank you.\n",
-      "id": 5
     }
   ]
 }
