@@ -2,7 +2,6 @@ import Card from './shared/Card'
 import {FaTimes} from 'react-icons/fa'
 
 function FeedbackItem({item, dispatch}) {
-console.log(dispatch);
 
     const deleteFeedback = async (id) => {
         if(window.confirm('Are you sure you want to delete?')) {

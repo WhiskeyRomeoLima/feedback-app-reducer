@@ -1,6 +1,7 @@
 import { useEffect, useReducer } from 'react'
 import feedbackReducer from './reducers/feedbackReducer'
 import Header from './components/Header'
+import FeedbackForm from './components/FeedbackForm'
 import FeedbackStats from './components/FeedbackStats'
 import FeedbackList from './components/FeedbackList'
 
@@ -27,14 +28,14 @@ const [state, dispatch] = useReducer(feedbackReducer, initialState)
     
   }
 
-   
   return (
     <>
     <Header />
 
       <div className='container'>
-        <FeedbackStats feedback= {state.feedback}  /> 
-        <FeedbackList feedback = {state.feedback} dispatch={dispatch} />
+        <FeedbackForm dispatch = {dispatch} />
+        <FeedbackStats feedback = {state.feedback}  /> 
+        <FeedbackList feedback = {state.feedback} dispatch = {dispatch} />
       </div>      
     </> 
 

@@ -8,6 +8,11 @@ const feedbackReducer = (state, action) => {
             ...state,
             feedback: action.payload
          }
+        case 'ADD-FEEDBACK':
+        return {
+            ...state,
+            feedback: action.payload
+        }         
         case 'DELETE-FEEDBACK':
             return {
             ...state,
