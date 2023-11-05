@@ -1,8 +1,9 @@
 import {useState, useEffect} from 'react'
-import feedbackReducer from '../reducers/feedbackReducer'
 import Card from './shared/Card'
 import Button from './shared/Button'
 import RatingSelect from './RatingSelect'
+
+//* feedback-app-reducer
 
 function FeedbackForm({dispatch}) {
   const [text, setText] = useState('') //tracks input as it is being entered
@@ -27,7 +28,6 @@ function FeedbackForm({dispatch}) {
         payload: data
       })
 }
-
   
   const handleTextChange = (e) => { // handles the inline event onChange from input element in form
     const value = e.target.value
@@ -44,19 +44,32 @@ function FeedbackForm({dispatch}) {
     setText(value) // update text
   }
 
+  
+  const updateFeedback = async (id, updatedItem) => {
+    const response = await fetch(`/feedback/${id}`, {
+      method: 'PUT',
+      headers: {'Content-Type' : 'application/json'},
+      body: JSON.stringify(updatedItem)
+    })
+    //data has the updated item
+    const data = await response.json()
+  
+    //when map finds the item, overwrite it with data
+    dispatch({id, data})
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     if (text.trim().length >= 10) {
       const newFeedback = {
-        //id: uuidv4(),
         text,
         rating,
       }
-      // if (feedbackEdit.edit === true) {
-      //   handleUpdate(feedbackEdit.item.id, newFeedback)
-      // } else {
+       if (newFeedback.editMode === true) {
+        updateFeedback(newFeedback.id, newFeedback)
+      } else {
           addFeedback(newFeedback)
-      // }
+       }
       
       setText('')
     }
@@ -69,7 +82,7 @@ function FeedbackForm({dispatch}) {
        html content (children) of those components. */} 
       <form onSubmit={handleSubmit}> 
         <h2>How would you rate your service with us?</h2>
-        {/* <RatingSelect feedbackEdit = {feedbackEdit} select={(rating) => setRating(rating)} /> */}
+        <RatingSelect select={(rating) => setRating(rating)} />
         <div className="input-group">
           <input 
           type='text' 

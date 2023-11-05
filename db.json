@@ -3,17 +3,26 @@
     {
       "id": 1,
       "rating": 10,
-      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae."
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.",
+      "editMode": false
     },
-    {
-      "text": "In nulla posuere sollicitudin aliquam ultrices sagittis. Sed ullamcorper morbi tincidunt ornare massa eget. Praesent semper feugiat.",
+    {      
+      "id": 2,
       "rating": 9,
-      "id": 2
+      "text": "In nulla posuere sollicitudin aliquam ultrices sagittis. Sed ullamcorper morbi tincidunt ornare massa eget. Praesent semper feugiat.",
+      "editMode": false
     },
     {
-      "text": "Ornare aenean euismod elementum nisi quis. Etiam erat velit scelerisque in dictum. Purus in massa nec feugiat nisl pretium fusce.",
-      "rating": 7,
-      "id": 3
+      "id": 3,
+      "rating": 6,
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.",
+      "editMode": false
+    },
+    {
+      "id": 4,
+      "rating": 10,      
+      "text": "New -- Lorem ipsum dolor sit amet consectetur adipisicing elit. consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.",
+      "editMode": false
     }
   ]
 }
