@@ -28,7 +28,7 @@ function FeedbackForm({dispatch}) {
         payload: data
       })
 }
-  
+//just to trigger an update
   const handleTextChange = (e) => { // handles the inline event onChange from input element in form
     const value = e.target.value
     if (value === '') {
@@ -65,7 +65,7 @@ function FeedbackForm({dispatch}) {
         text,
         rating,
       }
-       if (newFeedback.editMode === true) {
+    if (newFeedback.editMode === true) {
         updateFeedback(newFeedback.id, newFeedback)
       } else {
           addFeedback(newFeedback)
