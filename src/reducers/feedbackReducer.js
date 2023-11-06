@@ -1,7 +1,6 @@
 
 const feedbackReducer = (state, action) => {
     const {type, payload} = action
-    console.log(action.payload);
     
     switch(action.type) {
         case 'GET-FEEDBACK':
@@ -20,16 +19,14 @@ const feedbackReducer = (state, action) => {
             feedback: state.feedback.filter(item => item.id !== action.payload)    
             }
         case 'SET-EDIT-MODE':
+            console.log(payload)
             return {
             ...state, 
-            feedback: state.feedback.map((fb) => fb.id === payload.id ? {...fb, ...payload} : fb)
+            feebackEdit: [state.feebackEdit, payload]
             }
-        case 'UPDATE-FEEDBACK':
-            const {id, data} = action.payload
-            console.log(id, data);
-            
+        case 'UPDATE-FEEDBACK':            
             return {
-            feedback: state.feedback.map((item)=> item.id === id ? {...item, ...data} : item)
+            feedback: state.feedback.map((item)=> item.id === payload.id ? {...item, ...payload} : item)
             } 
          default:
             throw new Error(`No such type of ${type} in feedbackReducer.`)

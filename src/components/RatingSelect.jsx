@@ -1,12 +1,12 @@
 import {useState, useEffect} from 'react'
 
-function RatingSelect({select, /*feedbackEdit*/}) { //select passed in from FeedbackForm (select={(rating) => setRating(rating)})
+function RatingSelect({select, feedbackEdited}) { //select passed in from FeedbackForm (select={(rating) => setRating(rating)})
 const [selected, setSelected] = useState(10)
 
 // solution says this is not needed.  
   // useEffect(() => {
-  //   setSelected(feedbackEdit.item.rating)
-  // }, [feedbackEdit])
+  //   setSelected(feedbackEdited.rating)
+  // }, [feedbackEdited])
 
 const handleChange = (e) => {
   //console.log(+e.currentTarget.value);

@@ -14,14 +14,14 @@ function FeedbackItem({item, dispatch}) {
         }
       }
 
-      //set feedbackEdit.edit to true or false
-      const editFeedback = (item) => {
-        item.editMode = true
-        dispatch({
-          type: 'SET-EDIT-MODE',
-          payload: item
-        })
-      }
+
+    const editFeedback = (item) => {
+      item.edit = true
+      dispatch({
+        type: 'SET-EDIT-MODE',
+        payload: {item, edit: true}
+      })
+    }
 
     return(
        <Card >

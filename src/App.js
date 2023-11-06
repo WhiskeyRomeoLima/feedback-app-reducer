@@ -8,9 +8,9 @@ import FeedbackList from './components/FeedbackList'
 //* feedback-app-reducer
 
 function App() {
-
 const initialState = {
-  feedback: []
+  feedback: [],
+  feedbackEdit: {item: {}, edit: false}
 }
 
 const [state, dispatch] = useReducer(feedbackReducer, initialState)
@@ -36,9 +36,9 @@ const [state, dispatch] = useReducer(feedbackReducer, initialState)
     <Header />
 
       <div className='container'>
-        <FeedbackForm dispatch = {dispatch} />
+        <FeedbackForm  feedbackEdit = {state.feedbackEdit} dispatch = {dispatch} />
         <FeedbackStats feedback = {state.feedback}  /> 
-        <FeedbackList feedback = {state.feedback} dispatch = {dispatch} />
+        <FeedbackList  feedback = {state.feedback} dispatch = {dispatch} />
       </div>      
     </> 
 

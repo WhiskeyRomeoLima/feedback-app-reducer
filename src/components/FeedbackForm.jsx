@@ -5,12 +5,20 @@ import RatingSelect from './RatingSelect'
 
 //* feedback-app-reducer
 
-function FeedbackForm({dispatch}) {
+function FeedbackForm({feedbackEdit, dispatch}) {
   const [text, setText] = useState('') //tracks input as it is being entered
   const [rating, setRating] = useState(10) // 
   const [btnDisabled, setBtnDisabled] = useState(true) //allows the review to be submitted if > 10 characters
   const [message, setMessage] = useState('') //used to show warning while review is less than 10 characters and keeps button disabled
-
+ console.log(feedbackEdit);
+  useEffect(() => {
+    if (feedbackEdit.edit === true) {
+      setBtnDisabled(false)
+      setText(feedbackEdit.item.text)
+      setRating(feedbackEdit.item.rating)
+    }
+  }, [feedbackEdit])
+  
   const addFeedback = async (newFeedback) => {
     const response = await fetch('/feedback', {
       method: 'POST',
@@ -21,7 +29,7 @@ function FeedbackForm({dispatch}) {
       })
 
       const data = await response.json()
-      console.log(data);
+
       
       dispatch({
         type: 'ADD-FEEDBACK',
@@ -43,9 +51,10 @@ function FeedbackForm({dispatch}) {
     }
     setText(value) // update text
   }
-
+  
   
   const updateFeedback = async (id, updatedItem) => {
+    
     const response = await fetch(`/feedback/${id}`, {
       method: 'PUT',
       headers: {'Content-Type' : 'application/json'},
@@ -53,9 +62,11 @@ function FeedbackForm({dispatch}) {
     })
     //data has the updated item
     const data = await response.json()
-  
-    //when map finds the item, overwrite it with data
-    dispatch({id, data})
+    
+      dispatch({
+      type: 'UPDATE-FEEDBACK',
+      payload: data
+    })
   }
 
   const handleSubmit = (e) => {
@@ -65,6 +76,7 @@ function FeedbackForm({dispatch}) {
         text,
         rating,
       }
+      
     if (newFeedback.editMode === true) {
         updateFeedback(newFeedback.id, newFeedback)
       } else {
@@ -75,7 +87,6 @@ function FeedbackForm({dispatch}) {
     }
   }
 
- 
   return (
     <Card>
       {/* Card is used by FeedbackItem, FeedbackCard to display the
