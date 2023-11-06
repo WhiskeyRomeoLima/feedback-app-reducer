@@ -14,6 +14,7 @@ const initialState = {
 }
 
 const [state, dispatch] = useReducer(feedbackReducer, initialState)
+console.log(state);
 
   useEffect(() => {
     fetchFeedback()

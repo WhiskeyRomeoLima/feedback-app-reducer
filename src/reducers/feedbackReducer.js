@@ -22,7 +22,7 @@ const feedbackReducer = (state, action) => {
             console.log(payload)
             return {
             ...state, 
-            feebackEdit: [state.feebackEdit, payload]
+            feebackEdit: [...state.feedbackEdit, payload]
             }
         case 'UPDATE-FEEDBACK':            
             return {
