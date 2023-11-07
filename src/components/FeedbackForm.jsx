@@ -3,7 +3,7 @@ import Card from './shared/Card'
 import Button from './shared/Button'
 import RatingSelect from './RatingSelect'
 
-//* feedback-app-reducer
+//* feedback-app-reducer last updates are to updateFeedback 
 
 function FeedbackForm({feedbackEdit, dispatch}) {
   const [text, setText] = useState('') //tracks input as it is being entered

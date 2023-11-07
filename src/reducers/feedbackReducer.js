@@ -1,4 +1,4 @@
-
+// reducer for state
 const feedbackReducer = (state, action) => {
     const {type, payload} = action
     

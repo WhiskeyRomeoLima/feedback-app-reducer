@@ -5,7 +5,7 @@ import FeedbackForm from './components/FeedbackForm'
 import FeedbackStats from './components/FeedbackStats'
 import FeedbackList from './components/FeedbackList'
 
-//* feedback-app-reducer
+//* feedback-app-reducer - last change remove log statement
 
 function App() {
 const initialState = {
