@@ -10,7 +10,7 @@ function FeedbackForm({feedbackEdit, dispatch}) {
   const [rating, setRating] = useState(10) // 
   const [btnDisabled, setBtnDisabled] = useState(true) //allows the review to be submitted if > 10 characters
   const [message, setMessage] = useState('') //used to show warning while review is less than 10 characters and keeps button disabled
- console.log(feedbackEdit);
+
   useEffect(() => {
     if (feedbackEdit.edit === true) {
       setBtnDisabled(false)
@@ -66,7 +66,18 @@ function FeedbackForm({feedbackEdit, dispatch}) {
       dispatch({
       type: 'UPDATE-FEEDBACK',
       payload: data
-    })
+      })
+
+      dispatch({
+        type: 'RESET-FEEDBACK-EDIT',
+        payload: { item: {}, edit: false }
+      })
+
+    // setFeedbackEdit({
+    //   item: {},
+    //   edit: false,
+    // })
+
   }
 
   const handleSubmit = (e) => {
