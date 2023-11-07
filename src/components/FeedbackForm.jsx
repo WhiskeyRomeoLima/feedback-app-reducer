@@ -83,8 +83,8 @@ function FeedbackForm({feedbackEdit, dispatch}) {
         rating,
       }
       
-    if (newFeedback.edit === true) {
-        updateFeedback(newFeedback.id, newFeedback)
+    if (feedbackEdit.edit === true) {
+        updateFeedback(feedbackEdit.item.id, newFeedback)
       } else {
           addFeedback(newFeedback)
        }
@@ -99,7 +99,7 @@ function FeedbackForm({feedbackEdit, dispatch}) {
        html content (children) of those components. */} 
       <form onSubmit={handleSubmit}> 
         <h2>How would you rate your service with us?</h2>
-        <RatingSelect select={(rating) => setRating(rating)} />
+        <RatingSelect feedbackEdit = {feedbackEdit} select={(rating) => setRating(rating)} />
         <div className="input-group">
           <input 
           type='text' 
