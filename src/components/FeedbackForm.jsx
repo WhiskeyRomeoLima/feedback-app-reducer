@@ -73,11 +73,6 @@ function FeedbackForm({feedbackEdit, dispatch}) {
         payload: { item: {}, edit: false }
       })
 
-    // setFeedbackEdit({
-    //   item: {},
-    //   edit: false,
-    // })
-
   }
 
   const handleSubmit = (e) => {
@@ -88,7 +83,7 @@ function FeedbackForm({feedbackEdit, dispatch}) {
         rating,
       }
       
-    if (newFeedback.editMode === true) {
+    if (newFeedback.edit === true) {
         updateFeedback(newFeedback.id, newFeedback)
       } else {
           addFeedback(newFeedback)

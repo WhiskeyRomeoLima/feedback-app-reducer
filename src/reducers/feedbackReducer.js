@@ -21,7 +21,7 @@ const feedbackReducer = (state, action) => {
         case 'SET-EDIT-MODE':
             return {
             ...state, 
-            feebackEdit: state.feedbackEdit = payload
+            feedbackEdit: state.feedbackEdit = payload
             }
         case 'UPDATE-FEEDBACK':            
             return {
