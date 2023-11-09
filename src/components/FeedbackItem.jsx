@@ -1,6 +1,7 @@
 import Card from './shared/Card'
 import {FaTimes, FaEdit} from 'react-icons/fa'
 
+//this is where need to send actions to delete or edit feedback
 function FeedbackItem({item, dispatch}) {
     
     const deleteFeedback = async (id) => {
@@ -13,7 +14,6 @@ function FeedbackItem({item, dispatch}) {
           })
         }
       }
-
 
     const editFeedback = (item) => {
       item.edit = true

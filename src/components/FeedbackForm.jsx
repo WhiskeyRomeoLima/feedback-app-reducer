@@ -11,6 +11,8 @@ function FeedbackForm({feedbackEdit, dispatch}) {
   const [btnDisabled, setBtnDisabled] = useState(true) //allows the review to be submitted if > 10 characters
   const [message, setMessage] = useState('') //used to show warning while review is less than 10 characters and keeps button disabled
 
+  //copies text of an existing feedback into the input form, sets rating, disables the send button
+  //now submiting the revised feedback is same as the process for adding a feedback
   useEffect(() => {
     if (feedbackEdit.edit === true) {
       setBtnDisabled(false)
@@ -18,6 +20,8 @@ function FeedbackForm({feedbackEdit, dispatch}) {
       setRating(feedbackEdit.item.rating)
     }
   }, [feedbackEdit])
+
+ // console.log(feedbackEdit);
   
   const addFeedback = async (newFeedback) => {
     const response = await fetch('/feedback', {
@@ -36,11 +40,11 @@ function FeedbackForm({feedbackEdit, dispatch}) {
         payload: data
       })
 }
-//just to trigger an update
+
   const handleTextChange = (e) => { // handles the inline event onChange from input element in form
     const value = e.target.value
     if (value === '') {
-      setBtnDisabled(true)//if value is empty string,  message is null  and button is disabled
+      setBtnDisabled(true)//if value is empty string, message is null and button is disabled
       setMessage(null) 
     } else if (value !== '' && value.trim().length < 10) { // if the review is less than 10 charcaters
       setMessage('Review must be at least 10 characters.') // display message and keep button disabled
@@ -55,19 +59,22 @@ function FeedbackForm({feedbackEdit, dispatch}) {
   
   const updateFeedback = async (id, updatedItem) => {
     
+    //update the backend
     const response = await fetch(`/feedback/${id}`, {
       method: 'PUT',
       headers: {'Content-Type' : 'application/json'},
       body: JSON.stringify(updatedItem)
     })
+
     //data has the updated item
     const data = await response.json()
-    
+      //update state/UI
       dispatch({
       type: 'UPDATE-FEEDBACK',
       payload: data
       })
 
+      //reset feedbackEdit to initial state
       dispatch({
         type: 'RESET-FEEDBACK-EDIT',
         payload: { item: {}, edit: false }
@@ -75,6 +82,8 @@ function FeedbackForm({feedbackEdit, dispatch}) {
 
   }
 
+  //double check on length of FB, take action depending on
+  //whether this is an edited FB or new FB
   const handleSubmit = (e) => {
     e.preventDefault()
     if (text.trim().length >= 10) {
